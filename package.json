@@ -1,0 +1,39 @@
+bot.on('message', message=>{
+
+  let args = message.content.substring(PREFIX.length).split(" ");
+
+  switch(args[0]){
+    case 'ping':
+      message.channel.sendMessage('pong!')
+      break;
+    case 'website':
+        message.channel.sendMessage('bayonetmc.com')
+      break;
+    case 'info':
+      if(args[1] === 'version'){
+    message.channel.sendMessage('The current version is Version ' + version);
+      }else{
+        message.channel.sendMessage('Incorrect Variable');
+      }
+        break;
+    case 'status':
+      message.channel.sendMessage('We are currently ' + status)
+      break;
+
+      case 'help':
+        const attachment3 = new Attachment('./Help.txt')
+        message.channel.send(message.author, attachment3);
+        break;
+
+
+    bot.on('guildMemberAdd', member=>{
+ 
+      const channel = member.guild.channels.find(channel => channel.name === "welcome");
+      if(!channel) return;
+
+      channel.send(`Welcome to our BOT developing server, ${member}, please read the rules in the rules channel!`)
+
+    });
+    }
+
+ })
